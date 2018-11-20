@@ -14,8 +14,8 @@ function createTree(input) {
     for (var key in input) {
         var supervisor = nodeTree.findNodeByName(input[key]);
         var supervised = nodeTree.findNodeByName(key);
-        supervisor.setSupervised(supervised);
-        supervised.setSupervisor(supervisor);
+        supervisor.setSupervisor(supervised);
+        supervised.setSupervised(supervisor);
     }
     return nodeTree;
 }
