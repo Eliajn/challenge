@@ -1,5 +1,5 @@
 const createTree = require('./js/createtree.js');
-
+const submit_by_tag = require('./js/app.js');
 var obj = {'Rana':'Hiba',
            'Samar': 'Sara',
            'Hassan': 'Sara',
@@ -9,12 +9,11 @@ var obj = {'Rana':'Hiba',
 var nodeTree = createTree(obj);
 
 var node = nodeTree.getRootNode();
-console.log(node);
+
 function elia(node){
-    for(var n in node.supervised){
-     return elia(node.supervised[n]);
+    for(var n in node.supervisor){
+        console.log(n);
+     return elia(node.supervisor[n]);
     }
-    
-  
 }
 console.log(elia(node));

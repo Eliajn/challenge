@@ -1,0 +1,14 @@
+{
+  "name": "elia-challenge",
+  "version": "1.0.0",
+  "description": "create a graph out of a json object",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elia",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.26.0"
+  }
+}
