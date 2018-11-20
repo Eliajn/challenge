@@ -9,6 +9,9 @@
   "author": "Elia",
   "license": "MIT",
   "devDependencies": {
+    "css-loader": "^1.0.1",
+    "style-loader": "^0.23.1",
     "webpack": "^4.26.0"
-  }
+  },
+  "dependencies": {}
 }
