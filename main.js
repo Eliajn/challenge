@@ -1,5 +1,5 @@
 const createTree = require('./js/createtree.js');
-require('./css/styles.css')
+require('./css/styles.css');
 var obj = {'Rana':'Hiba',
            'Samar': 'Sara',
            'Hassan': 'Sara',
@@ -17,7 +17,7 @@ function elia(node){
     }
     console.log(node.name);
 }
-// console.log(elia(node));
+console.log(elia(node));
 elia(node);
 
 

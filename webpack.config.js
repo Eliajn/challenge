@@ -1,4 +1,5 @@
 module.exports = {
+    mode: 'development',
     entry: './main.js',
     output: {
         path: __dirname + '/dist',
@@ -8,8 +9,25 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: [
+                    {loader: 'style-loader'},
+                    {loader: 'css-loader'},
+                ]
+            },
+            {
+                test: /\.js$/,
+                use:[
+                    {
+                        loader: 'babel-loader',
+                        query: {
+                            presets: ['@babel/preset-env']
+                        }
+                    }
+                ],
+                exclude: /node_modules/,
+                
             }
         ]
     }
 }
+
