@@ -1,5 +1,5 @@
 const createTree = require('./js/createtree.js');
-
+require('./css/styles.css')
 var obj = {'Rana':'Hiba',
            'Samar': 'Sara',
            'Hassan': 'Sara',
