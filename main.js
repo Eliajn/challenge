@@ -10,20 +10,18 @@ var nodeTree = createTree(obj);
 
 var node = nodeTree.getRootNode();
 
-function elia(node){
-    for(var n in node.supervised){
+// function elia(node){
+//     for(var n in node.supervised){
      
-     return elia(node.supervised[n]);
-    }
-    console.log(node.name);
-}
-console.log(elia(node));
-elia(node);
-
+//      return elia(node.supervised[n]);
+//     }
+//     console.log(node.name);
+// }
+// console.log(elia(node));
+// elia(node);
 
 function submit_by_tag () {
     var jsonObject= document.getElementById('jsonObject').value;
-    
     this.IsJsonString = function(str) {
         try {
             JSON.parse(str);
@@ -39,3 +37,4 @@ function submit_by_tag () {
         console.log(jsonObject);
     }
 };
+window.submit = submit_by_tag;
