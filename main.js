@@ -1,5 +1,5 @@
 const createTree = require('./js/createtree.js');
-const submit_by_tag = require('./js/app.js');
+
 var obj = {'Rana':'Hiba',
            'Samar': 'Sara',
            'Hassan': 'Sara',
@@ -19,3 +19,23 @@ function elia(node){
 }
 // console.log(elia(node));
 elia(node);
+
+
+function submit_by_tag () {
+    var jsonObject= document.getElementById('jsonObject').value;
+    
+    this.IsJsonString = function(str) {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            return false;
+        }
+        return true;
+    }
+
+    if(!this.IsJsonString(jsonObject)) {
+        alert("not json");
+    } else {
+        console.log(jsonObject);
+    }
+};

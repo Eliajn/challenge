@@ -1,4 +1,4 @@
-var submit_by_tag = function () {
+function submit_by_tag () {
     var jsonObject= document.getElementById('jsonObject').value;
     
     this.IsJsonString = function(str) {
@@ -15,8 +15,5 @@ var submit_by_tag = function () {
     } else {
         console.log(jsonObject);
     }
-}
-
-module.exports = submit_by_tag;
-
+};
 
