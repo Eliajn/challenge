@@ -1,0 +1,23 @@
+@import "resets";
+@import "variables";
+@import "mixins";
+
+.wrapper > label {
+    @include element;
+}
+.wrapper > input {
+    @include element;
+}
+.wrapper > textarea {
+    background-color: $lightergreen;
+    width: 50%;
+    margin: 10px;
+    padding: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    border-radius: 25px 50px;
+    height:200px;
+}
+#tree {
+    @include wrapper;
+}
