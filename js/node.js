@@ -1,18 +1,14 @@
 var Node = function(name) {
     this.name = name;
     this.supervisor = null;
-    this.supervised = [];
+    this.supervising = [];
 
-    this.setSupervisor = function (supervisor) {
-        this.supervisor = supervisor;
+    this.setSupervisor = function (input) {
+        this.supervisor = input;
     }
-    this.setSupervised = function (supervisor) {
-        this.supervised.push(supervisor);
-        supervisor.setSupervisor(this);
+    this.setSupervising = function (input) {
+        this.supervising.push(input);
     }
-    // this.getSupervised = function() {
-    //     return this.supervised;
-    // }
 }
 
 module.exports = Node;

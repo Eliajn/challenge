@@ -104,7 +104,7 @@ eval("\nvar content = __webpack_require__(/*! !../node_modules/css-loader!./styl
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var NodeTree = __webpack_require__(/*! ./nodetree.js */ \"./js/nodetree.js\");\n\nfunction createTree(input) {\n  var nodeTree = new NodeTree();\n\n  for (var key in input) {\n    if (!nodeTree.findNodeByName(key)) {\n      nodeTree.createNode(key);\n    }\n\n    if (!nodeTree.findNodeByName(input[key])) {\n      nodeTree.createNode(input[key]);\n    }\n  }\n\n  for (var key in input) {\n    var supervisor = nodeTree.findNodeByName(input[key]);\n    var supervised = nodeTree.findNodeByName(key);\n    supervisor.setSupervisor(supervised);\n    supervised.setSupervised(supervisor);\n  }\n\n  return nodeTree;\n}\n\nmodule.exports = createTree;\n\n//# sourceURL=webpack:///./js/createtree.js?");
+eval("var NodeTree = __webpack_require__(/*! ./nodetree.js */ \"./js/nodetree.js\");\n\nfunction createTree(input) {\n  var nodeTree = new NodeTree();\n\n  for (var key in input) {\n    if (!nodeTree.findNodeByName(key)) {\n      nodeTree.createNode(key);\n    }\n\n    if (!nodeTree.findNodeByName(input[key])) {\n      nodeTree.createNode(input[key]);\n    }\n  }\n\n  for (var key in input) {\n    var supervisor = nodeTree.findNodeByName(input[key]);\n    var supervising = nodeTree.findNodeByName(key);\n    supervisor.setSupervising(supervising);\n    supervising.setSupervisor(supervisor);\n  }\n\n  return nodeTree;\n}\n\nmodule.exports = createTree;\n\n//# sourceURL=webpack:///./js/createtree.js?");
 
 /***/ }),
 
@@ -115,7 +115,7 @@ eval("var NodeTree = __webpack_require__(/*! ./nodetree.js */ \"./js/nodetree.js
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("var Node = function Node(name) {\n  this.name = name;\n  this.supervisor = null;\n  this.supervised = [];\n\n  this.setSupervisor = function (supervisor) {\n    this.supervisor = supervisor;\n  };\n\n  this.setSupervised = function (supervisor) {\n    this.supervised.push(supervisor);\n    supervisor.setSupervisor(this);\n  }; // this.getSupervised = function() {\n  //     return this.supervised;\n  // }\n\n};\n\nmodule.exports = Node;\n\n//# sourceURL=webpack:///./js/node.js?");
+eval("var Node = function Node(name) {\n  this.name = name;\n  this.supervisor = null;\n  this.supervising = [];\n\n  this.setSupervisor = function (input) {\n    this.supervisor = input;\n  };\n\n  this.setSupervising = function (input) {\n    this.supervising.push(input);\n  };\n};\n\nmodule.exports = Node;\n\n//# sourceURL=webpack:///./js/node.js?");
 
 /***/ }),
 
@@ -126,7 +126,7 @@ eval("var Node = function Node(name) {\n  this.name = name;\n  this.supervisor =
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var Node = __webpack_require__(/*! ./node.js */ \"./js/node.js\");\n\nvar NodeTree = function NodeTree(input) {\n  this.nodes = [];\n\n  this.getRootNode = function () {\n    for (var i = 0; i < this.nodes.length; i++) {\n      if (this.nodes[i].supervisor) {\n        return this.nodes[i];\n      }\n    }\n\n    return null;\n  };\n\n  this.findNodeByName = function (name) {\n    for (var i = 0; i < this.nodes.length; i++) {\n      if (this.nodes[i].name === name) {\n        return this.nodes[i];\n      }\n    }\n\n    return null;\n  };\n\n  this.createNode = function (name) {\n    var node = new Node(name);\n    this.nodes.push(node);\n  };\n};\n\nmodule.exports = NodeTree;\n\n//# sourceURL=webpack:///./js/nodetree.js?");
+eval("var Node = __webpack_require__(/*! ./node.js */ \"./js/node.js\");\n\nvar NodeTree = function NodeTree(input) {\n  this.nodes = [];\n\n  this.getRootNode = function () {\n    for (var i = 0; i < this.nodes.length; i++) {\n      if (!this.nodes[i].supervisor) {\n        return this.nodes[i];\n      }\n    }\n\n    return null;\n  };\n\n  this.findNodeByName = function (name) {\n    for (var i = 0; i < this.nodes.length; i++) {\n      if (this.nodes[i].name === name) {\n        return this.nodes[i];\n      }\n    }\n\n    return null;\n  };\n\n  this.createNode = function (name) {\n    var node = new Node(name);\n    this.nodes.push(node);\n  };\n};\n\nmodule.exports = NodeTree;\n\n//# sourceURL=webpack:///./js/nodetree.js?");
 
 /***/ }),
 
@@ -137,7 +137,7 @@ eval("var Node = __webpack_require__(/*! ./node.js */ \"./js/node.js\");\n\nvar 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var createTree = __webpack_require__(/*! ./js/createtree.js */ \"./js/createtree.js\");\n\n__webpack_require__(/*! ./css/styles.css */ \"./css/styles.css\");\n\nvar obj = {\n  'Rana': 'Hiba',\n  'Samar': 'Sara',\n  'Hassan': 'Sara',\n  'Sara': 'Hiba',\n  'Hiba': 'Siroun'\n};\nvar nodeTree = createTree(obj);\nvar node = nodeTree.getRootNode(); // function elia(node){\n//     for(var n in node.supervised){\n//      return elia(node.supervised[n]);\n//     }\n//     console.log(node.name);\n// }\n// console.log(elia(node));\n// elia(node);\n\nfunction submit_by_tag() {\n  var jsonObject = document.getElementById('jsonObject').value;\n\n  this.IsJsonString = function (str) {\n    try {\n      JSON.parse(str);\n    } catch (e) {\n      return false;\n    }\n\n    return true;\n  };\n\n  if (!this.IsJsonString(jsonObject)) {\n    alert(\"not json\");\n  } else {\n    console.log(jsonObject);\n  }\n}\n\n;\nwindow.submit = submit_by_tag;\n\n//# sourceURL=webpack:///./main.js?");
+eval("var createTree = __webpack_require__(/*! ./js/createtree.js */ \"./js/createtree.js\");\n\n__webpack_require__(/*! ./css/styles.css */ \"./css/styles.css\");\n\nfunction submit_by_tag() {\n  var jsonObject = document.getElementById('jsonObject').value;\n  var parsed = JSON.parse(jsonObject);\n  var nodeTree = createTree(parsed);\n  var node = nodeTree.getRootNode();\n  console.log(\"root-node:\" + node.name);\n\n  this.createObject = function (node) {\n    var obj = {};\n    var array = [];\n\n    for (var n in node.supervising) {\n      array.push(this.createObject(node.supervising[n]));\n    }\n\n    var name = node.name;\n    obj[name] = array;\n    return obj;\n  };\n\n  this.IsJsonString = function (str) {\n    try {\n      JSON.parse(str);\n    } catch (e) {\n      return false;\n    }\n\n    return true;\n  };\n\n  if (!this.IsJsonString(jsonObject)) {\n    alert(\"Please enter a JSON object and try again\");\n  } else {\n    console.log(jsonObject);\n    var fullObject = this.createObject(node);\n    console.log(fullObject);\n  }\n}\n\nwindow.submit = submit_by_tag;\n\n//# sourceURL=webpack:///./main.js?");
 
 /***/ }),
 

@@ -16,4 +16,3 @@ function submit_by_tag () {
         console.log(jsonObject);
     }
 };
-

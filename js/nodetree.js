@@ -3,7 +3,7 @@ var NodeTree = function(input) {
     this.nodes = [];
     this.getRootNode = function() {
         for ( var i = 0; i < this.nodes.length; i++) {
-            if(this.nodes[i].supervisor) {
+            if(!this.nodes[i].supervisor) {
                 return this.nodes[i];
             }
         }

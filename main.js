@@ -1,27 +1,22 @@
 const createTree = require('./js/createtree.js');
 require('./css/styles.css');
-var obj = {'Rana':'Hiba',
-           'Samar': 'Sara',
-           'Hassan': 'Sara',
-           'Sara': 'Hiba',
-           'Hiba': 'Siroun'};
-
-var nodeTree = createTree(obj);
-
-var node = nodeTree.getRootNode();
-
-// function elia(node){
-//     for(var n in node.supervised){
-     
-//      return elia(node.supervised[n]);
-//     }
-//     console.log(node.name);
-// }
-// console.log(elia(node));
-// elia(node);
 
 function submit_by_tag () {
     var jsonObject= document.getElementById('jsonObject').value;
+    var parsed = JSON.parse(jsonObject);
+    var nodeTree = createTree(parsed);
+    var node = nodeTree.getRootNode();
+    console.log("root-node:" + node.name);
+    this.createObject = function (node) {
+            var obj={};
+            var array =[];
+            for (var n in node.supervising) {
+                array.push(this.createObject(node.supervising[n]));
+            }
+            var name  = node.name;
+            obj[name] = array;
+            return obj;
+    };
     this.IsJsonString = function(str) {
         try {
             JSON.parse(str);
@@ -29,12 +24,13 @@ function submit_by_tag () {
             return false;
         }
         return true;
-    }
-
+    };
     if(!this.IsJsonString(jsonObject)) {
-        alert("not json");
+        alert("Please enter a JSON object and try again");
     } else {
         console.log(jsonObject);
+        var constructedObject = this.createObject(node);
+        console.log(constructedObject);
     }
-};
+}
 window.submit = submit_by_tag;
