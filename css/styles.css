@@ -39,3 +39,12 @@ body{
     border-radius: 25px 50px;
     height:200px;
 }
+#tree{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #40E0D0;
+}

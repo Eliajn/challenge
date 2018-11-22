@@ -1,5 +1,6 @@
 const createTree = require('./js/createtree.js');
-require('./css/styles.css');
+// require('./css/styles.css');
+require('./sass/styles.scss');
 
 function submit_by_tag () {
     var jsonObject= document.getElementById('jsonObject').value;
