@@ -17,6 +17,28 @@ function submit_by_tag () {
             obj[name] = array;
             return obj;
     };
+    this.drow = function(obj) {
+        var html = '';
+        var keys  = Object.keys(obj);
+        var name = keys[0];
+        if(obj[name].length == 0){
+            html  = "<h1>"+name+"</h1>\n";
+        } else{
+            html  = "<h1>"+name+"</h1>\n<ul>\n";
+        }
+        
+
+        for(var i = 0; i < obj[name].length; i++){
+            var li = "\t<li>\n" + this.drow(obj[name][i]) + "</li>\n";
+            html = html + li;
+        }
+        if(obj[name].length == 0){
+            return html;
+        } else{
+            return html + "</ul>";
+        }
+        
+    }
     this.IsJsonString = function(str) {
         try {
             JSON.parse(str);
@@ -31,6 +53,8 @@ function submit_by_tag () {
         console.log(jsonObject);
         var constructedObject = this.createObject(node);
         console.log(constructedObject);
+        mydiv = document.getElementById("tree");
+        mydiv.innerHTML += this.drow(constructedObject);
     }
 }
 window.submit = submit_by_tag;
